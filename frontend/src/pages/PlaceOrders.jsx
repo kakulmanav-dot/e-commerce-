@@ -29,43 +29,43 @@ useEffect(()=>{
   })
   console.log("place order loading")
   const onChangeHandler = (e) => {
-    // let name = e.target.name;
-    // let value = e.target.value;
+    let name = e.target.name;
+    let value = e.target.value;
 
-    // setFormData(prev => ({...prev , [name]: value}))
-    console.log("hello");
+    setFormData(prev => ({...prev , [name]: value}))
+  
   }
   const onSubmitHandler = (e) => {
        e.preventDefault();
        console.log("FORM SUBMITTED");
-      //  try {
-      //     let orderItems = [];
-      //     if(!cartItem){
-      //       console.log("cart is empty");
-      //       return;
-      //     }
-      //     for (const items in cartItem) {  // items tells about particular id
-      //          for(const item in cartItem[items]) //item tell about the size
-      //        {
-      //          const product = products.find(product => product._id.toString() === items.toString());
+      try {
+          let orderItems = [];
+          if(!cartItem){
+            console.log("cart is empty");
+            return;
+          }
+          for (const items in cartItem) {  // items tells about particular id
+               for(const item in cartItem[items]) //item tell about the size
+             {
+               const product = products.find(product => product._id.toString() === items.toString());
 
-      //        if (product) {
-      //        const itemInfo = {...product};
-      //        itemInfo.size = item;
-      //        itemInfo.quantity = cartItem[items][item];
-      //        orderItems.push(itemInfo);
-      //       }
-      //          }
-      //        }
+             if (product) {
+             const itemInfo = {...product};
+             itemInfo.size = item;
+             itemInfo.quantity = cartItem[items][item];
+             orderItems.push(itemInfo);
+            }
+               }
+             }
             
-      //     console.log(orderItems);
+          console.log(orderItems);
            
-      //     // navigate("/orders");
-      //  }
+          // navigate("/orders");
+       }
        
-      //   catch (error) {
-      //   console.log(error);
-      //  }
+        catch (error) {
+        console.log(error);
+       }
   }
   return (
     <form onSubmit={onSubmitHandler}  className=" flex flex-col sm:flex-row   sm:justify-between sm:gap-20 sm:m-3 w-full">
